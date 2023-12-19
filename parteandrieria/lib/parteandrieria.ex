@@ -55,18 +55,38 @@ defmodule Parteandrieria do
     IO.puts("Sistema Final\n===================\n\n")
     IO.puts("1.Criar\n2.Listar\n3.Atualizar\n4.Excluir\n5.Sair\n")
     IO.puts("Entre com sua opção:")
-    opcao=IO.gets("")
+    opcao=IO.gets("") |> String.trim()
+    op = String.to_integer(opcao)
 
-    case opcao do
+    case op do
       1 ->
+      IO.puts("Quantos lados possui o polígono?")
+      resp=IO.gets("")
+      IO.puts(resp)
     # Código a ser executado se a expressão corresponder a padrao1
       2 ->
+      IO.puts("Quantos lados possui o polígono?")
+      resp=IO.gets("")
+      IO.puts(resp)
     # Código a ser executado se a expressão corresponder a padrao2
       3 ->
+      IO.puts("Quantos lados possui o polígono?")
+      resp=IO.gets("")
+      IO.puts(resp)
     # Código a ser executado se a expressão não corresponder a nenhum dos padrões anteriores
       4 -> 
+      IO.puts("Quantos lados possui o polígono?")
+      resp=IO.gets("")
+      IO.puts(resp)
 
       5 -> 
+      IO.puts("Quantos lados possui o polígono?")
+      resp=IO.gets("")
+      IO.puts(resp)
+
+      _ ->
+      IO.puts("Número inválido")
+  
 
 
     end

@@ -60,9 +60,26 @@ defmodule Parteandrieria do
 
     case op do
       1 ->
-      IO.puts("Quantos lados possui o polígono?")
-      resp=IO.gets("")
-      IO.puts(resp)
+      #vertices=[]
+      IO.puts("Digite dois valores para representar as coordenadas de um ponto:")
+      IO.puts("Primeiro valor:")
+      resp1=IO.gets("")
+      IO.puts("Segundo valor:")
+      resp2=IO.gets("")
+
+      #nova_lista = valores_a_adicionar ++ lista_vazia
+      vertices=[]
+      IO.inspect(vertices)
+      nova_lista=vertices ++ [resp1, resp2]
+      IO.inspect(nova_lista)
+      #nova_lista = lista_original ++ [novo_elemento]
+
+
+      #vertices_verdadeiros = vertices_verdadeiros ++ [nova_lista]
+      #IO.inspect(vertices_verdadeiros)
+
+
+      #IO.puts(resp)
     # Código a ser executado se a expressão corresponder a padrao1
       2 ->
       IO.puts("Quantos lados possui o polígono?")

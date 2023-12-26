@@ -61,16 +61,15 @@ defmodule Parteandrieria do
     case op do
       1 ->
       #vertices=[]
-      IO.puts("Digite dois valores para representar as coordenadas de um ponto:")
-      IO.puts("Primeiro valor:")
-      resp1=IO.gets("")
-      IO.puts("Segundo valor:")
-      resp2=IO.gets("")
+      resp = IO.gets("Digite as coordenadas x e y: ")
+      resp2 = String.trim(resp)
+      coords = String.split(coord) |> Enum.map(&String.to_integer/1)
 
       #nova_lista = valores_a_adicionar ++ lista_vazia
       vertices=[]
-      IO.inspect(vertices)
-      nova_lista=vertices ++ [resp1, resp2]
+      nova_lista = [coords | vertices]
+
+      #nova_lista=vertices ++ [resp1, resp2]
       IO.inspect(nova_lista)
       #nova_lista = lista_original ++ [novo_elemento]
 

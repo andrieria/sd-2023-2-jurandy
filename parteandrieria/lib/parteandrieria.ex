@@ -61,16 +61,45 @@ defmodule Parteandrieria do
     case op do
       1 ->
       #vertices=[]
-      resp = IO.gets("Digite as coordenadas x e y: ")
-      resp2 = String.trim(resp)
-      coords = String.split(coord) |> Enum.map(&String.to_integer/1)
+      resp = IO.gets("Digite os pares de coordenadas x e y: ")
+      IO.puts("é resp o #{resp}")
+      #resp2 = String.trim(resp)
+      #IO.inspect(resp2, label: "O valor é")
+      #teste = String.split(resp)
+      #IO.puts(teste)
+
+      
+      #coords = String.split(resp)
+      #IO.puts(coords)
+      #IO.inspect("Aqui #{coords}")
+
+
+      lista = Enum.concat(resp)
+      IO.puts(lista)
+
+ 
+      #IO.inspect(lista)
+
+      
+
+      """
+      String.trim/1 é usado para remover espaços em branco extras do início e do final da string.
+      String.split(~r/\s+/, trim: true) divide a string nos espaços em branco, criando uma lista de strings.
+      Enum.chunk_every(2, 1, :discard) agrupa os elementos em duplas consecutivas.
+      Enum.map/2 é usado para aplicar uma função que converte cada par de coordenadas em uma dupla de inteiros.
+      """
+      
+      #|> Enum.map(&String.to_integer/1)
+      #String.split(~r/\s+/, trim: true)
+
+      #Enum.chunk_every(2, 1, :discard)
 
       #nova_lista = valores_a_adicionar ++ lista_vazia
-      vertices=[]
-      nova_lista = [coords | vertices]
+      #vertices=[]
+      #nova_lista = [coords | vertices]
 
       #nova_lista=vertices ++ [resp1, resp2]
-      IO.inspect(nova_lista)
+      #IO.inspect(nova_lista)
       #nova_lista = lista_original ++ [novo_elemento]
 
 

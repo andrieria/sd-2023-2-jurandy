@@ -62,58 +62,14 @@ defmodule Parteandrieria do
       1 ->
       #vertices=[]
       resp = IO.gets("Digite os pares de coordenadas x e y: ")
-      IO.puts("é resp o #{resp}")
-      #resp2 = String.trim(resp)
-      #IO.inspect(resp2, label: "O valor é")
-      #teste = String.split(resp)
-      #IO.puts(teste)
-
+      lista_strings = String.split(resp)
+      separados = Enum.map(lista_strings, &String.to_integer/1)
+      coords = Enum.chunk_every(separados, 2, 2, :discard)
+      #o segundo 2 é para saber quantos pular dps que fizer a primeira dupla 
       
-      #coords = String.split(resp)
-      #IO.puts(coords)
-      #IO.inspect("Aqui #{coords}")
-
-
-      lista = Enum.concat(resp)
-      IO.puts(lista)
-
- 
-      #IO.inspect(lista)
-
-      
-
-      """
-      String.trim/1 é usado para remover espaços em branco extras do início e do final da string.
-      String.split(~r/\s+/, trim: true) divide a string nos espaços em branco, criando uma lista de strings.
-      Enum.chunk_every(2, 1, :discard) agrupa os elementos em duplas consecutivas.
-      Enum.map/2 é usado para aplicar uma função que converte cada par de coordenadas em uma dupla de inteiros.
-      """
-      
-      #|> Enum.map(&String.to_integer/1)
-      #String.split(~r/\s+/, trim: true)
-
-      #Enum.chunk_every(2, 1, :discard)
-
-      #nova_lista = valores_a_adicionar ++ lista_vazia
-      #vertices=[]
-      #nova_lista = [coords | vertices]
-
-      #nova_lista=vertices ++ [resp1, resp2]
-      #IO.inspect(nova_lista)
-      #nova_lista = lista_original ++ [novo_elemento]
-
-
-      #vertices_verdadeiros = vertices_verdadeiros ++ [nova_lista]
-      #IO.inspect(vertices_verdadeiros)
-
-
-      #IO.puts(resp)
-    # Código a ser executado se a expressão corresponder a padrao1
       2 ->
-      IO.puts("Quantos lados possui o polígono?")
-      resp=IO.gets("")
-      IO.puts(resp)
-    # Código a ser executado se a expressão corresponder a padrao2
+      Enum.each(lista, fn elemento ->
+        IO.puts("Coordenadas: #{elemento}")
       3 ->
       IO.puts("Quantos lados possui o polígono?")
       resp=IO.gets("")

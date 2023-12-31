@@ -1,36 +1,98 @@
 defmodule Sistema do
+  @menu "
+
+  Menu do sistema
+
+  =============
+
+  1. Criar
+  2. Listar
+  3. Atualizar
+  4. Excluir
+  5. Sair
+
+  Entre com sua opção: "
 
 
-  def criar() do
-    resp = IO.gets("Digite os pares de coordenadas x e y: ")
-    lista_strings = String.split(resp)
-    separados = Enum.map(lista_strings, &String.to_integer/1)
-    coords = Enum.chunk_every(separados, 2, 2, :discard)
+  def criar(lista) do
+    IO.puts("Criar")
+    coordenadas = IO.gets("Digite os pares de coordenadas x e y: ") 
+    |> String.split()
+    |> Enum.map(&String.to_integer/1)
+    |> Enum.chunk_every(2, 2, :discard)
+
+    [coordenadas | lista]
+    #lista_strings = 
+    #separados = 
+    #coords = 
     #agrupa os elementos em  duplas a cada dois elementos
-    {coords, estado}
+    
+    #principal()
+
+
   end
 
-  def listar() do
-    lista = criar()
-    IO.inspect(lista)
+  def listar(lista) do
+    IO.puts("Listar")
+
+    Enum.each(lista, fn coordenadas ->
+      IO.inspect(Enum.join(coordenadas, " "))
+    end)
+
+    lista
+    #IO.inspect(coords)
+    #for elemento <- lista do
+    #  IO.puts(elemento)
+    #end
+    #principal()
+
   end
 
+  def alterar(lista) do
+    IO.puts("Alterar")
+    #principal()
 
-  def menu() do
-    IO.puts("Sistema Final\n===================\n\n")
-    IO.puts("1.Criar\n2.Listar\n3.Atualizar\n4.Excluir\n5.Sair\n")
-    IO.puts("Entre com sua opção:")
-    opcao=IO.gets("") |> String.trim()
-    op = String.to_integer(opcao)
+
+  end
+
+  def excluir(lista) do
+    IO.puts("Excluir")
+    #principal()
+
+  end
+
+  def principal(lista) do
+    op = IO.gets(@menu)
+    |> String.trim()
+    |> String.to_integer()
 
 
     case op do
-      1 -> x = criar()
 
-      2 -> listar()
-      _ ->
-      IO.puts("Número inválido")
+      1 ->
+        principal(criar(lista))
+
+      2 ->
+        #listando = listar(coordenadas)
+        principal(listar(lista))
+
+      3->
+        principal(alterar(lista))
+
+      4 ->
+        principal(excluir(lista))
+
+
+      5 -> IO.puts("Até logo")
+
+      _ -> IO.puts("Opção inválida")
+          principal(lista)
+
+
     end
+
+
   end
+
 
 end

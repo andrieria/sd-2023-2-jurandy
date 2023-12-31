@@ -16,10 +16,11 @@ defmodule Sistema do
 
   def criar(lista) do
     IO.puts("Criar")
-    coordenadas = IO.gets("Digite os pares de coordenadas x e y: ") 
-    |> String.split()
-    |> Enum.map(&String.to_integer/1)
-    |> Enum.chunk_every(2, 2, :discard)
+    coordenadas = IO.gets("Digite os pares de coordenadas x e y: ") |> 
+    String.trim() |> 
+    String.split() |> 
+    Enum.map(&String.to_integer/1) |>
+    Enum.chunk_every(2, 2, :discard)
 
     [coordenadas | lista]
     #lista_strings = 
@@ -36,8 +37,10 @@ defmodule Sistema do
     IO.puts("Listar")
 
     Enum.each(lista, fn coordenadas ->
-      IO.inspect(Enum.join(coordenadas, " "))
-    end)
+      #IO.inspect(Enum.join(coordenadas, " "))
+      IO.inspect(coordenadas)
+    end) 
+    
 
     lista
     #IO.inspect(coords)

@@ -23,13 +23,6 @@ defmodule Sistema do
     Enum.chunk_every(2, 2, :discard)
 
     [coordenadas | lista]
-    #lista_strings = 
-    #separados = 
-    #coords = 
-    #agrupa os elementos em  duplas a cada dois elementos
-    
-    #principal()
-
 
   end
 
@@ -37,23 +30,44 @@ defmodule Sistema do
     IO.puts("Listar")
 
     Enum.each(lista, fn coordenadas ->
-      #IO.inspect(Enum.join(coordenadas, " "))
       IO.inspect(coordenadas)
     end) 
     
-
     lista
-    #IO.inspect(coords)
-    #for elemento <- lista do
-    #  IO.puts(elemento)
-    #end
-    #principal()
 
   end
 
   def alterar(lista) do
     IO.puts("Alterar")
-    #principal()
+    resp = IO.gets("Digite o par que você deseja alterar (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
+    [x, y] = resp
+    IO.inspect([x, y])
+    indice = Enum.find_index(lista, fn v -> v == [x, y] end) 
+    resp2 = IO.gets("Digite o novo par (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
+    [a, b] = resp2
+    List.replace_at(lista, indice, [a, b]) 
+
+    lista
+    #Enum.find(lista, fn alter -> alter==[x,y] end) feito por mim
+
+
+
+
+    #nova_coordenada = Enum.map(coordenadas, fn [x, y] ->
+      #if x == 2 and y == 7 do
+    #[x, 10]
+ #else
+   # [x, y]
+  #end
+    #resp = IO.gets("Qual é o par de coordenada que você quer alterar os valores?") |> String.trim() |> String.split()
+    
+    #lista = Enum.map(coordenadas, fn  ->
+    #  if x == 2 and y == 7 do
+    #[x, 10]
+  #else
+    #[x, y]
+  #end
+#end)
 
 
   end
@@ -76,7 +90,6 @@ defmodule Sistema do
         principal(criar(lista))
 
       2 ->
-        #listando = listar(coordenadas)
         principal(listar(lista))
 
       3->

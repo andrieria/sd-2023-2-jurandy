@@ -21,8 +21,13 @@ defmodule Sistema do
     String.split() |> 
     Enum.map(&String.to_integer/1) |>
     Enum.chunk_every(2, 2, :discard)
+    
 
-    [coordenadas | lista]
+    IO.puts("Coordenadas criadas com sucesso.")
+
+    IO.puts("Método criar")
+    IO.inspect(coordenadas ++ lista)
+    coordenadas ++ lista
 
   end
 
@@ -33,21 +38,29 @@ defmodule Sistema do
       IO.inspect(coordenadas)
     end) 
     
+    IO.puts("Método listar")
+    IO.inspect(lista)
     lista
 
   end
 
   def alterar(lista) do
     IO.puts("Alterar")
-    resp = IO.gets("Digite o par que você deseja alterar (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
-    [x, y] = resp
-    IO.inspect([x, y])
-    indice = Enum.find_index(lista, fn v -> v == [x, y] end) 
-    resp2 = IO.gets("Digite o novo par (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
-    [a, b] = resp2
-    List.replace_at(lista, indice, [a, b]) 
+    
+    [x, y] = IO.gets("Digite o par que você deseja alterar (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
+
+    indice = Enum.find_index(lista, fn v -> v == [x, y] end)
+    #indice =  
+    IO.inspect(indice)
+
+    [a, b] = IO.gets("Digite o novo par (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
+    
+    IO.inspect([a, b])
+    nova_lista = List.replace_at(lista, indice, [a, b]) 
+    lista = nova_lista
 
     lista
+    
     #Enum.find(lista, fn alter -> alter==[x,y] end) feito por mim
 
 

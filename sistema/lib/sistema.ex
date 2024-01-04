@@ -60,36 +60,26 @@ defmodule Sistema do
     lista = nova_lista
 
     lista
-    
-    #Enum.find(lista, fn alter -> alter==[x,y] end) feito por mim
-
-
-
-
-    #nova_coordenada = Enum.map(coordenadas, fn [x, y] ->
-      #if x == 2 and y == 7 do
-    #[x, 10]
- #else
-   # [x, y]
-  #end
-    #resp = IO.gets("Qual é o par de coordenada que você quer alterar os valores?") |> String.trim() |> String.split()
-    
-    #lista = Enum.map(coordenadas, fn  ->
-    #  if x == 2 and y == 7 do
-    #[x, 10]
-  #else
-    #[x, y]
-  #end
-#end)
 
 
   end
 
   def excluir(lista) do
     IO.puts("Excluir")
-    #principal()
 
+    IO.puts("Digite o par que você deseja excluir (formato: x y):")
+    [x, y] = IO.gets("") |> String.trim() |> String.split() |> Enum.map(&String.to_integer/1)
+
+    ponto = [x, y]
+
+    nova_lista = List.delete(lista, ponto)
+
+    lista = nova_lista
+    lista
+
+    
   end
+
 
   def principal(lista) do
     op = IO.gets(@menu)

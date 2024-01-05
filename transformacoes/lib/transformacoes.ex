@@ -70,7 +70,7 @@ defmodule Transformacoes do
     sx = String.to_integer(sx_str)
     sy = String.to_integer(Enum.join(sy_str, " "))
 
-    nova_lista = Enum.map(lista, fn {x, y} -> {x * sx, y * sy} end)
+    nova_lista = Enum.map(lista, fn [x, y] -> [x * sx, y * sy] end)
     IO.puts("Escala aplicada com sucesso.")
     IO.inspect(nova_lista)
   end

@@ -11,7 +11,8 @@ defmodule Transformacoes do
   2. Rotação
   3. Translação
   4. Reflexão
-  5. Sair
+  5. Zoom
+  6. Sair
 
   Entre com sua opção: "
 
@@ -26,7 +27,7 @@ defmodule Transformacoes do
 
     IO.puts("Coordenadas criadas com sucesso.")
 
-    IO.puts("Método criar")
+    IO.puts("Vértices:")
     IO.inspect(coordenadas ++ lista)
     coordenadas ++ lista
 
@@ -56,17 +57,25 @@ defmodule Transformacoes do
     IO.puts("Rotação concluída")
     IO.inspect(vertices_rotacionados)
     
-    #fn vertice -> ponto_rotacao(vertice, angulo_em_radianos) end)
-    #lista = vertices_rotacionados
-    #lista
+ 
   end
 
-      #def rotate_polygon(%Polygon{vertices: lista}, angle) do
-   # vertices_rotacionados = Enum.map(lista, fn {x, y} ->
-     # rotate_point({x, y}, angle)
-    #end)
-    #%Polygon{vertices: vertices_rotacionados}
- # end
+  def escala(lista) do
+    IO.puts("Escala")
+    IO.puts("Digite o fator de escala para x e y (formato: x y):")
+
+    input = IO.gets("") |> String.trim()
+
+    [sx_str | sy_str] = String.split(input, " ", trim: true)
+    sx = String.to_integer(sx_str)
+    sy = String.to_integer(Enum.join(sy_str, " "))
+
+    nova_lista = Enum.map(lista, fn {x, y} -> {x * sx, y * sy} end)
+    IO.puts("Escala aplicada com sucesso.")
+    IO.inspect(nova_lista)
+  end
+
+
 
 
   def translacao(lista) do
@@ -76,8 +85,7 @@ defmodule Transformacoes do
 
     nova_lista = Enum.map(lista, fn [x, y] -> [x + translacao_x, y + translacao_y] end)
 
-    lista = nova_lista
-    lista
+    IO.inspect(nova_lista)
   end
 
   def reflexao(lista) do
@@ -91,17 +99,17 @@ defmodule Transformacoes do
     case opcao do
       1 ->
         nova_lista = Enum.map(lista, fn [x, y] -> [x, -y] end)
-        lista = nova_lista
-        lista
+        IO.inspect(nova_lista)
+        
 
       2 ->
         nova_lista = Enum.map(lista, fn [x, y] -> [-x, y] end)
-        lista = nova_lista
-        lista
+        IO.inspect(nova_lista)
+        
 
       _ ->
         IO.puts("Opção inválida.")
-        lista
+        IO.inspect(lista)
     end
   end
 
@@ -126,6 +134,9 @@ defmodule Transformacoes do
         principal(reflexao(lista))
 
       5 -> 
+        principal(escala(lista))
+
+      6 -> 
         IO.puts("Até logo")
       
       _ -> IO.puts("Opção inválida")

@@ -53,15 +53,18 @@ defmodule Sistema do
     #indice =  
     IO.inspect(indice)
 
-    [a, b] = IO.gets("Digite o novo par (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
-    
-    IO.inspect([a, b])
-    nova_lista = List.replace_at(lista, indice, [a, b]) 
-    lista = nova_lista
+    case indice do
+    nil -> 
+      IO.puts("Par não encontrado")
+    _ ->
+      [a, b] = IO.gets("Digite o novo par (formato: x y):") |> String.trim |> String.split() |> Enum.map(&String.to_integer/1)
+      
+      IO.inspect([a, b])
+      nova_lista = List.replace_at(lista, indice, [a, b]) 
+      lista = nova_lista
 
-    lista
-
-
+      lista
+    end
   end
 
   def excluir(lista) do
@@ -74,8 +77,14 @@ defmodule Sistema do
 
     nova_lista = List.delete(lista, ponto)
 
-    lista = nova_lista
-    lista
+    case nova_lista == lista do
+    false ->
+      lista = nova_lista
+      lista
+    true ->
+      IO.puts("Não houve exclusão de pontos.")
+    end
+
 
     
   end
@@ -85,7 +94,7 @@ defmodule Sistema do
     op = IO.gets(@menu)
     |> String.trim()
     |> String.to_integer()
-
+    IO.puts("")
 
     case op do
 
@@ -107,11 +116,8 @@ defmodule Sistema do
       _ -> IO.puts("Opção inválida")
           principal(lista)
 
-
     end
-
-
   end
-
-
 end
+
+Sistema.principal([])
